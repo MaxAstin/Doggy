@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="photo"
+            type="com.bunbeauty.doggy.model.data.Photo" />
+
+        <variable
+            name="checkChangedHandler"
+            type="com.bunbeauty.doggy.handler.CheckChangedHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            image="@{photo.link}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:button="@drawable/selector_like"
+            android:checked="@{photo.liked}"
+             />
+
+    </LinearLayout>
+</layout>
+

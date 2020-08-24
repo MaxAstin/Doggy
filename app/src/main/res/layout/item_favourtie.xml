@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="favouriteClickHandler"
+            type="com.bunbeauty.doggy.handler.FavouriteClickHandler" />
+
+        <variable
+            name="favouriteWithPhotos"
+            type="com.bunbeauty.doggy.model.data.FavouriteWithPhotos" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{() -> favouriteClickHandler.clickToFavourite(favouriteWithPhotos, context)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{favouriteWithPhotos.favourite.name}" />
+    </LinearLayout>
+</layout>
+

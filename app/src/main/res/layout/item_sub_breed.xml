@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="subBreedClickHandler"
+            type="com.bunbeauty.doggy.handler.SubBreedClickHandler" />
+
+        <variable
+            name="subBreed"
+            type="com.bunbeauty.doggy.model.data.SubBreed" />
+
+        <variable
+            name="breed"
+            type="com.bunbeauty.doggy.model.data.Breed" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="@{() -> subBreedClickHandler.click(breed, subBreed, context)}"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{subBreed.subBreed}" />
+    </LinearLayout>
+
+</layout>
