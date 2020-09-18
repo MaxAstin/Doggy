@@ -8,7 +8,7 @@ import com.bunbeauty.doggy.model.data.Photo
 
 @Database(
     entities = [Photo::class, Favourite::class],
-    version = 3
+    version = 5
 )
 abstract class LocalDatabase : RoomDatabase() {
 

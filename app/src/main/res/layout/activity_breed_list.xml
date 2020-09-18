@@ -12,9 +12,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/activity_breed_list_btn_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fav" />
+
         <androidx.recyclerview.widget.RecyclerView
             itemList="@{viewModel.gottenBreeds}"
-            android:id="@+id/breedListRecyclerView"
+            android:id="@+id/activity_breed_list_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

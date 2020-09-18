@@ -3,6 +3,7 @@ package com.bunbeauty.doggy.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bunbeauty.doggy.databinding.ItemPhotoBinding
@@ -26,7 +27,8 @@ class PhotoAdapter : BaseAdapter<PhotoAdapter.PhotoViewHolder, Photo>(), CheckCh
         holder.binding.checkChangedHandler = this
     }
 
-    override fun onCheckChanged(photo: Photo, isChecked: Boolean) {
+    override fun onCheckChanged(photo: Photo, checkBox: View) {
+        val isChecked = (checkBox as AppCompatCheckBox).isChecked
         if (isChecked) {
             viewModel.addPhotoLinkToFavorite(photo)
         } else {

@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bunbeauty.doggy.databinding.ItemFavourtieBinding
 import com.bunbeauty.doggy.handler.FavouriteClickHandler
 import com.bunbeauty.doggy.model.data.FavouriteWithPhotos
-import com.bunbeauty.doggy.model.data.FavouriteWithPhotos.Companion.FAVOURITE_EXTRA
+import com.bunbeauty.doggy.model.data.FavouriteWithPhotos.CREATOR.FAVOURITE_EXTRA
 import com.bunbeauty.doggy.view.PhotosActivity
 
-class FavouriteAdapter : BaseAdapter<FavouriteAdapter.FavouriteItemViewHolder, FavouriteWithPhotos>(),
+class FavouriteAdapter :
+    BaseAdapter<FavouriteAdapter.FavouriteItemViewHolder, FavouriteWithPhotos>(),
     FavouriteClickHandler {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteItemViewHolder {

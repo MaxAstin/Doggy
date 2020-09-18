@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".view.SubBreedListActivity" />
         <activity android:name=".view.PhotosActivity" />
+        <activity android:name=".view.FavouriteActivity" />
     </application>
 
 </manifest>

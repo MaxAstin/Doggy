@@ -2,9 +2,10 @@ package com.bunbeauty.doggy.view_model
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bunbeauty.doggy.model.data.FavouriteWithPhotos
 import com.bunbeauty.doggy.model.ropository.IFavouriteRepository
-import com.bunbeauty.doggy.view_model.callback.GetAllFavouritesCallback
+import kotlinx.coroutines.launch
 
 class FavouriteViewModel(private val favouriteRepository: IFavouriteRepository): ViewModel() {
 
@@ -15,10 +16,8 @@ class FavouriteViewModel(private val favouriteRepository: IFavouriteRepository):
     }
 
     private fun getFavourites() {
-        favouriteRepository.getAllFavourites(object : GetAllFavouritesCallback {
-            override fun onAllFavouritesGotten(favouriteList: List<FavouriteWithPhotos>) {
-                gottenFavouriteList.set(favouriteList)
-            }
-        })
+        viewModelScope.launch {
+            gottenFavouriteList.set(favouriteRepository.getAllFavourites().await())
+        }
     }
 }

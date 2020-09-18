@@ -14,11 +14,11 @@ import androidx.room.ForeignKey.CASCADE
     ]
 )
 data class Photo(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val link: String,
     @ColumnInfo(index = true)
-    val favouriteId: Long = 0
+    var favouriteId: Long = 0
 ) : Item {
     @Ignore
     var isLiked: Boolean = false

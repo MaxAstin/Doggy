@@ -13,8 +13,9 @@ interface FavouriteDao {
 
     @Transaction
     fun insert(favouriteWithPhotos: FavouriteWithPhotos): FavouriteWithPhotos {
-        insert(favouriteWithPhotos.favourite)
+        val favouriteId = insert(favouriteWithPhotos.favourite)
         for (photo in favouriteWithPhotos.photoList) {
+            photo.favouriteId = favouriteId
             insert(photo)
         }
 

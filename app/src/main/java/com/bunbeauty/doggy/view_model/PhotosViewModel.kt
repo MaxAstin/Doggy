@@ -4,12 +4,18 @@ import android.content.Intent
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bunbeauty.doggy.model.data.*
 import com.bunbeauty.doggy.model.ropository.IBreedRepository
+import com.bunbeauty.doggy.model.ropository.IFavouriteRepository
 import com.bunbeauty.doggy.view_model.callback.GetPhotosCallback
+import kotlinx.coroutines.launch
 
-class PhotosViewModel(private val intent: Intent, private val breedRepository: IBreedRepository) :
-    ViewModel() {
+class PhotosViewModel(
+    private val intent: Intent,
+    private val breedRepository: IBreedRepository,
+    private val favouriteRepository: IFavouriteRepository
+) : ViewModel() {
 
     val gottenPhotoList = ObservableField<List<Photo>>(arrayListOf())
     val isLoading = ObservableField<Boolean>()
@@ -65,11 +71,13 @@ class PhotosViewModel(private val intent: Intent, private val breedRepository: I
 
     fun addPhotoLinkToFavorite(photo: Photo) {
         favourite.photoList.add(photo)
-        Log.d("test", "add " + favourite.favourite.name + " : " + photo.link)
+        viewModelScope.launch {
+            favouriteRepository.insert(favourite)
+        }
     }
 
     fun removePhotoLinkFromFavorite(photo: Photo) {
         favourite.photoList.remove(photo)
-        Log.d("test", "remove " + favourite.favourite.name + " : " + photo.link)
+        //favouriteRepository.insert(favourite)
     }
 }

@@ -1,5 +1,6 @@
 package com.bunbeauty.doggy.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -31,13 +32,21 @@ class BreedListActivity : AppCompatActivity() {
             .inject(this)
 
         breedListBinding = DataBindingUtil.setContentView(this, R.layout.activity_breed_list)
-
-        breedListRecyclerView.setHasFixedSize(true)
-        breedListRecyclerView.layoutManager = LinearLayoutManager(this)
-        breedListRecyclerView.adapter = BreedAdapter()
-
         breedListBinding.viewModel =
             ViewModelProvider(this, breedListViewModelFactory).get(BreedListViewModel::class.java)
         breedListBinding.executePendingBindings()
+
+        setupUI()
+    }
+
+    fun setupUI() {
+        activity_breed_list_btn_favourite.setOnClickListener {
+            val intent = Intent(this, FavouriteActivity::class.java)
+            startActivity(intent)
+        }
+
+        activity_breed_list_rv.setHasFixedSize(true)
+        activity_breed_list_rv.layoutManager = LinearLayoutManager(this)
+        activity_breed_list_rv.adapter = BreedAdapter()
     }
 }
